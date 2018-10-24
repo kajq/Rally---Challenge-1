@@ -7,12 +7,11 @@ class Careers
 	private $id;
 	private $codigo;
 	private $nombre;
+	private $connect_db;
 	
 	function Careers()
 	{
-		$this->id=		$pId;
-		$this->codigo=	$pCodigo;
-		$this->nombre=	$pNombre;
+	$this->connect_db = $_SESSION['connect'];
 	}
 
 	function Select()

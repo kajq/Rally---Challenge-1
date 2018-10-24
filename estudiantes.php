@@ -15,6 +15,7 @@
             <br>Apellidos: <input type="text" name="apellidos" required><br>
             <br>Carrera: <select name="id_carrera"> 
              <?php 
+             require("connect_db.php");
              require("careers.php");
              $oCareers = new Careers();
              $oCareers->Select();
