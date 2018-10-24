@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2018 a las 04:23:29
+-- Tiempo de generación: 24-10-2018 a las 05:01:35
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 5.6.32
 
@@ -34,15 +34,6 @@ CREATE TABLE `carreras` (
   `nombre` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `carreras`
---
-
-INSERT INTO `carreras` (`id`, `codigo`, `nombre`) VALUES
-(0, 111, 'PRINCIPIOS DE PROGRAMACIÓN '),
-(1, 112, 'FUNDAMENTOS DE INFORMÁTICA '),
-(2, 113, 'MATEMÁTICAS DISCRETAS');
-
 -- --------------------------------------------------------
 
 --
@@ -50,7 +41,6 @@ INSERT INTO `carreras` (`id`, `codigo`, `nombre`) VALUES
 --
 
 CREATE TABLE `estudiante` (
-  `id` int(11) NOT NULL,
   `cedula` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `apellidos` varchar(200) NOT NULL
@@ -63,6 +53,7 @@ CREATE TABLE `estudiante` (
 --
 
 CREATE TABLE `estudiante_carrera` (
+  `id` int(11) NOT NULL,
   `id_estudiante` int(11) NOT NULL,
   `id_carrera` int(11) NOT NULL,
   `fecha` date NOT NULL
@@ -82,14 +73,31 @@ ALTER TABLE `carreras`
 -- Indices de la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`cedula`);
 
 --
 -- Indices de la tabla `estudiante_carrera`
 --
 ALTER TABLE `estudiante_carrera`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_estudiante` (`id_estudiante`),
   ADD KEY `id_carrera` (`id_carrera`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `carreras`
+--
+ALTER TABLE `carreras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `estudiante_carrera`
+--
+ALTER TABLE `estudiante_carrera`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -100,7 +108,7 @@ ALTER TABLE `estudiante_carrera`
 --
 ALTER TABLE `estudiante_carrera`
   ADD CONSTRAINT `estudiante_carrera_ibfk_1` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id`),
-  ADD CONSTRAINT `estudiante_carrera_ibfk_2` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`id`);
+  ADD CONSTRAINT `estudiante_carrera_ibfk_2` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiante` (`cedula`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

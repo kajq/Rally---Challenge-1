@@ -1,0 +1,26 @@
+
+
+.form{
+    height: 250px;
+    width: 300px;
+    background-color:darkslategray;
+    text-align: center;
+    padding: 30px;
+    margin: auto;
+    font-size: 18px;
+}
+
+.input, select{
+    border-radius: 10px;
+}
+
+.button { 
+    background: darkolivegreen;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.button:hover{
+    background: darkkhaki;
+}
+
