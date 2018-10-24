@@ -9,11 +9,12 @@ $register->insert_user();
 
 class register 
 {
+	private $id;
 	private $cedula;
 	private $nombre;
 	private $apellidos;
 	private $carrera;
-	private $hora_matricula
+	private $hora_matricula;
 	private $connect_db;
 
 	function register()
@@ -36,11 +37,12 @@ class register
 			echo '");</script> ';
 		} else {
 			//los ceros son tipo usuario estandar y estado de usuario
-			$qInsert = "INSERT INTO matricula VALUES('$this->cedula', '$this->carrera', '$this->hora_matricula')";
+			$qInsert = "INSERT INTO estudiante_carrera VALUES('', '$this->cedula', '$this->carrera', '$this->hora_matricula')";
 			$execute = mysqli_query($this->connect_db,$qInsert);
 			if (!$execute) {
-				echo '<script>alert("Errormessage1: "';
-				echo $this->connect_db->error . "')</script>";
+				echo '<script>alert("Error al insertar matricula: ';
+				echo $this->connect_db->error;
+				echo '");</script> ';
 			} else {
 				echo '<script>alert("Usuario registrado con éxito")</script>';
 				}

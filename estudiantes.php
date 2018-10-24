@@ -8,7 +8,7 @@
 
 <body>
     <div>
-        <form name="estudiante" method="post" action="">
+        <form name="estudiante" method="post" action="register.php">
 
             <br>Cedula: <input type="text" name="cedula" required><br>
             <br>Nombre: <input type="text" name="nombre" required><br>
